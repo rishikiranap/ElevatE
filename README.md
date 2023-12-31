@@ -24,17 +24,20 @@ A motivational app that is intended to elevate the mood of its users by providin
    "flutter run"
    
 ## Features
-1.Mood-based emoji selection for generating quotes.
-2.Quotes are displayed with a visually appealing UI.
-3.Liked quotes can be saved and viewed separately.
-4.App settings for customizing the user experience.
+1. Mood-based emoji selection for generating quotes.
+
+2. Quotes are displayed with a visually appealing UI.
+
+3. Liked quotes can be saved and viewed separately.
+
+4. App settings for customizing the user experience.
 
 ## Built With
-Flutter - UI toolkit
-OpenAI GPT-3.5-turbo - Natural language processing model
-Provider - State management
-http - HTTP client
-shared_preferences - Local storage
+1. Flutter - UI toolkit
+2. OpenAI GPT-3.5-turbo - Natural language processing model
+3. Provider - State management
+4. http - HTTP client
+5. shared_preferences - Local storage
 
 ## Contributing
 Feel free to open issues or submit pull requests to contribute to the project.
