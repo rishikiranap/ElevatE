@@ -134,15 +134,20 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
   final List<String> quotes;
 
   FirstPage({required this.quotes});
 
   @override
+  _FirstPageState createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  double buttonFontSize = 18.0; // Initial value, adjust as needed
+  int _currentIndex = 0;
+  @override
   Widget build(BuildContext context) {
-    double buttonFontSize =
-        MediaQuery.of(context).size.width > 600 ? 24.0 : 18.0;
     double containerHeight = MediaQuery.of(context).size.height * 0.2;
 
     return Scaffold(
@@ -193,12 +198,13 @@ class FirstPage extends StatelessWidget {
               height: 280,
               child: Center(
                 child: Text(
-                  'Hii there,                                 how are you feeling today?',
+                  'Hii there,                                    how are you feeling today?',
                   style: TextStyle(
                       fontSize: buttonFontSize + 8,
                       fontWeight: FontWeight.w400,
                       color: Colors.white),
                 ),
+
               ),
             ),
             Container(
@@ -229,7 +235,7 @@ class FirstPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      buildButton(context, '🤯', 'irritated'),
+                      buildButton(context, '🤯', 'very irritated'),
                       buildButton(context, '😖', 'irritated'),
                       buildButton(context, '🥴', 'Dont care'),
                       buildButton(context, '🫤', 'confused'),
@@ -249,10 +255,10 @@ class FirstPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      buildButton(context, '😑', 'No comments'),
-                      buildButton(context, '😝', 'Super chilled'),
-                      buildButton(context, '😡', 'Very Angry'),
-                      buildButton(context, '🫨', 'Mind Boggling'),
+                      buildButton(context, '🥺', 'Very emotional'),
+                      buildButton(context, '😮‍💨', 'exhausted'),
+                      buildButton(context, '😟', 'Shocked'),
+                      buildButton(context, '😓', 'Depressed'),
                     ],
                   ),
                 ],
@@ -266,14 +272,14 @@ class FirstPage extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 5.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [ const
-                  Padding(
+                children: [
+                  const Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Quotes for today',
                       style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.normal,
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -282,31 +288,32 @@ class FirstPage extends StatelessWidget {
                     child: ListView.builder(
                       scrollDirection:
                           Axis.horizontal, // Make the list scroll horizontally
-                      itemCount: quotes
+                      itemCount: widget.quotes
                           .length, // Replace with the number of cards you want to display
                       itemBuilder: (context, index) {
                         return Container(
                           width: 200, // Set a fixed width or adjust as needed
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                          margin: const EdgeInsets.symmetric(horizontal: 10.0),
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
-                              colors:[
-                                Colors.blue,
-                                Colors.purple
+                              colors: [
+                                Colors.purple,
+                                Colors.blue
                               ], // Adjust colors as needed
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
                             ),
                             // Set your desired background color
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Center(
                             child: Text(
-                              quotes[index], // Replace with your card content
+                              widget.quotes[
+                                  index], // Replace with your card content
                               style: const TextStyle(
                                 color:
                                     Colors.white, // Set your desired text color
-                                fontSize: 20.0,
+                                fontSize: 22.0,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
@@ -328,14 +335,27 @@ class FirstPage extends StatelessWidget {
           BottomNavigationBarItem(
               label: "settings", icon: Icon(Icons.settings)),
         ],
-        currentIndex: _MyAppState()._currentIndex,
+        currentIndex: _currentIndex,
         onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => FirstPage(
+                        quotes: globalQuotes,
+                      )),
+            );
+            print(globalQuotes);
+          }
           if (index == 1) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => LikedQuotesPage()),
             );
-            print(globalQuotes);
           }
           if (index == 2) {
             Navigator.push(
