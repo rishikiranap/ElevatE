@@ -1,16 +1,12 @@
-# flutter_basics
+# ElevatE
 
-A new Flutter project.
+A motivational app that is intended to elevate the mood of its users by providing motivational quotes based on user current mood.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Important 
+The API key has to be changed before using this app. Please generate your own API key from ChatGPT and replace it in the code.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
