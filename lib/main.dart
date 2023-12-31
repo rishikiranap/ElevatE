@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ElevatE/Settings_page.dart';
 import 'package:ElevatE/LikedQuotesPage.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -8,7 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'global.dart';
 import 'app_settings.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: '.env');
   runApp(
     ChangeNotifierProvider(
       create: (context) => AppSettings(),
@@ -82,8 +84,7 @@ class _MyAppState extends State<MyApp> {
       Uri.parse("https://api.openai.com/v1/completions"),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization':
-            'Bearer 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',
+        'Authorization': dotenv.env['APIKEY'] ?? 'API KEY ERROR',
         "model": "gpt-3.5-turbo-0613",
       },
       body: jsonEncode({
@@ -203,7 +204,6 @@ class _FirstPageState extends State<FirstPage> {
                       fontWeight: FontWeight.w400,
                       color: Colors.white),
                 ),
-
               ),
             ),
             Container(
@@ -420,7 +420,7 @@ class _QuotesPageState extends State<QuotesPage> {
       ),
       body: _isLoading
           ? const Center(
-              child:  CircularProgressIndicator(),
+              child: CircularProgressIndicator(),
             )
           : SingleChildScrollView(
               child: Container(
@@ -474,8 +474,7 @@ class _QuotesPageState extends State<QuotesPage> {
         Uri.parse("https://api.openai.com/v1/completions"),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':
-              'Bearer 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',
+          'Authorization': dotenv.env['APIKEY'] ?? 'API KEY ERROR',
           "model": "gpt-3.5-turbo-0613",
         },
         body: jsonEncode({
@@ -575,7 +574,8 @@ class _QuoteCardState extends State<QuoteCard> {
                 color: Colors.black,
               ),
             ),
-            const SizedBox(height: 1.0), // Add space between quote and like button
+            const SizedBox(
+                height: 1.0), // Add space between quote and like button
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
