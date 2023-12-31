@@ -26,11 +26,11 @@ class _SettingsPageState extends State<SettingsPage> {
         backgroundColor: Colors.black,
         title: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text('Settings'),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(
@@ -48,7 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SwitchListTile(
-              title: Text('Experience Mode'),
+              title: const Text('Experience Mode'),
               value: isDarkModeEnabled,
               onChanged: (value) {
                 setState(() {
@@ -61,10 +61,10 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             ListTile(
-              title: Text('Number of Quotes to Display'),
+              title: const Text('Number of Quotes to Display'),
               subtitle: Text('Current: ${appSettings.numberOfQuotes}'),
               trailing: IconButton(
-                icon: Icon(Icons.edit),
+                icon: const Icon(Icons.edit),
                 onPressed: () {
                   // Add logic to show a dialog or navigate to a page for editing the number of quotes
                   // For simplicity, a dialog is used here
@@ -73,7 +73,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             ListTile(
-              title: Text('About'),
+              title: const Text('About'),
               onTap: () {
                 _showAboutDialog(context);
               },
@@ -101,7 +101,7 @@ class _SettingsPageState extends State<SettingsPage> {
               MaterialPageRoute(
                   builder: (context) => FirstPage(quotes: globalQuotes,)),
             );
-            print(globalQuotes);
+            
           }
           if (index == 1) {
             Navigator.push(
@@ -124,8 +124,8 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          contentPadding: EdgeInsets.all(16.0),
-          title: Center(
+          contentPadding: const EdgeInsets.all(16.0),
+          title: const Center(
             child: Text('About the App'),
           ),
           content: Column(
@@ -136,8 +136,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 width: 100,
                 height: 100,
               ),
-              SizedBox(height: 16),
-              Text('ElevatE V1.0'),
+              const SizedBox(height: 16),
+              const Text('ElevatE V1.0'),
               // Add more details about your app
             ],
           ),
@@ -146,7 +146,7 @@ class _SettingsPageState extends State<SettingsPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Close'),
+              child: const Text('Close'),
             ),
           ],
         );
@@ -160,12 +160,12 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Edit Number of Quotes'),
+          title: const Text('Edit Number of Quotes'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Enter the number of quotes to display:'),
-              SizedBox(height: 16),
+              const Text('Enter the number of quotes to display:'),
+              const SizedBox(height: 16),
               TextField(
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
@@ -182,14 +182,14 @@ class _SettingsPageState extends State<SettingsPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 // Add logic to save the new number of quotes
                 Navigator.of(context).pop();
               },
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         );

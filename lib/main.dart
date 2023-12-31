@@ -31,8 +31,8 @@ class LoadingScreen extends StatelessWidget {
               width: 300,
               height: 300,
             ),
-            SizedBox(height: 20),
-            CircularProgressIndicator(),
+            const SizedBox(height: 20),
+            const CircularProgressIndicator(),
           ],
         ),
       ),
@@ -163,7 +163,7 @@ class _FirstPageState extends State<FirstPage> {
                 height: 65,
               ),
             ),
-            Spacer(),
+            const Spacer(),
             const Text(
               'ElevatE',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -220,7 +220,7 @@ class _FirstPageState extends State<FirstPage> {
                       buildButton(context, '😫', 'Feel like crying'),
                     ],
                   ),
-                  SizedBox(height: 10), // Adjusted spacing
+                  const SizedBox(height: 10), // Adjusted spacing
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -230,7 +230,7 @@ class _FirstPageState extends State<FirstPage> {
                       buildButton(context, '😵‍💫', 'So Confused'),
                     ],
                   ),
-                  SizedBox(height: 10), // Adjusted spacing
+                  const SizedBox(height: 10), // Adjusted spacing
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -240,7 +240,7 @@ class _FirstPageState extends State<FirstPage> {
                       buildButton(context, '🫤', 'confused'),
                     ],
                   ),
-                  SizedBox(height: 10), // Adjusted spacing
+                  const SizedBox(height: 10), // Adjusted spacing
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -250,7 +250,7 @@ class _FirstPageState extends State<FirstPage> {
                       buildButton(context, '🫨', 'Mind Boggling'),
                     ],
                   ),
-                  SizedBox(height: 10), // Adjusted spacing
+                  const SizedBox(height: 10), // Adjusted spacing
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -273,7 +273,7 @@ class _FirstPageState extends State<FirstPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Quotes for today',
                       style: TextStyle(
@@ -403,10 +403,10 @@ class _QuotesPageState extends State<QuotesPage> {
         title: Row(
           children: [
             const Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Text('Motivational Quotes'),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(
@@ -419,8 +419,8 @@ class _QuotesPageState extends State<QuotesPage> {
         ),
       ),
       body: _isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
+          ? const Center(
+              child:  CircularProgressIndicator(),
             )
           : SingleChildScrollView(
               child: Container(
@@ -575,14 +575,14 @@ class _QuoteCardState extends State<QuoteCard> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 1.0), // Add space between quote and like button
+            const SizedBox(height: 1.0), // Add space between quote and like button
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
                   icon: _isLiked
-                      ? Icon(Icons.favorite)
-                      : Icon(Icons.favorite_border),
+                      ? const Icon(Icons.favorite)
+                      : const Icon(Icons.favorite_border),
                   onPressed: () {
                     setState(() {
                       _isLiked = !_isLiked;

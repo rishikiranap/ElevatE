@@ -18,11 +18,11 @@ class _LikedQuotesPageState extends State<LikedQuotesPage> {
         backgroundColor: Colors.black,
         title: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text('Liked Quotes'),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(
@@ -136,17 +136,17 @@ class QuoteCard extends StatelessWidget {
           children: [
             Text(
               quote,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18.0,
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  icon: Icon(Icons.delete_forever),
+                  icon: const Icon(Icons.delete_forever),
                   onPressed: onDislike,
                 ),
               ],
