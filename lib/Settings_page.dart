@@ -14,6 +14,7 @@ class _SettingsPageState extends State<SettingsPage> {
   bool isDarkModeEnabled = false;
   bool areNotificationsEnabled = false;
   int numberOfQuotes = 6;
+  int _currentIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -59,16 +60,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 // You can use a theme provider or directly update the theme here
               },
             ),
-            SwitchListTile(
-              title: Text('Notifications'),
-              value: areNotificationsEnabled,
-              onChanged: (value) {
-                setState(() {
-                  areNotificationsEnabled = value;
-                });
-                // Add logic to enable/disable notifications based on the switch state
-              },
-            ),
             ListTile(
               title: Text('Number of Quotes to Display'),
               subtitle: Text('Current: ${appSettings.numberOfQuotes}'),
@@ -81,6 +72,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 },
               ),
             ),
+            ListTile(
+              title: Text('About'),
+              onTap: () {
+                _showAboutDialog(context);
+              },
+            ),
           ],
         ),
       ),
@@ -91,12 +88,18 @@ class _SettingsPageState extends State<SettingsPage> {
           BottomNavigationBarItem(
               label: "settings", icon: Icon(Icons.settings)),
         ],
+        currentIndex: _currentIndex,
+
         onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
           if (index == 0) {
+
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => FirstPage(quotes: globalQuotes)),
+                  builder: (context) => FirstPage(quotes: globalQuotes,)),
             );
             print(globalQuotes);
           }
@@ -114,6 +117,40 @@ class _SettingsPageState extends State<SettingsPage> {
           }
         },
       ),
+    );
+  }
+  void _showAboutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.all(16.0),
+          title: Center(
+            child: Text('About the App'),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/img.png', // Replace with the correct path to your app logo
+                width: 100,
+                height: 100,
+              ),
+              SizedBox(height: 16),
+              Text('ElevatE V1.0'),
+              // Add more details about your app
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
     );
   }
 

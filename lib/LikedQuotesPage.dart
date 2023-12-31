@@ -4,7 +4,13 @@ import 'main.dart';
 import 'Settings_page.dart';
 import 'global.dart';
 
-class LikedQuotesPage extends StatelessWidget {
+class LikedQuotesPage extends StatefulWidget {
+  @override
+  _LikedQuotesPageState createState() => _LikedQuotesPageState();
+}
+
+class _LikedQuotesPageState extends State<LikedQuotesPage> {
+  int _currentIndex = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +20,7 @@ class LikedQuotesPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Saved Quotes'),
+              child: Text('Liked Quotes'),
             ),
             Spacer(),
             Padding(
@@ -35,18 +41,19 @@ class LikedQuotesPage extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Liked"),
           BottomNavigationBarItem(label: "settings", icon: Icon(Icons.settings)),
         ],
+        currentIndex: _currentIndex,
         onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
           if (index == 0) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => FirstPage(quotes: globalQuotes )),
+              MaterialPageRoute(builder: (context) => FirstPage(quotes: globalQuotes, )),
             );
           }
           if (index == 1) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LikedQuotesPage()),
-            );
+            // No need to navigate to LikedQuotesPage since we are already on it
           }
           if (index == 2) {
             Navigator.push(

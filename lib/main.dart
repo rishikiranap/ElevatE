@@ -49,7 +49,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool isInitialized = false;
-  int _currentIndex = 0;
 
   @override
   void initState() {
