@@ -22,7 +22,7 @@
 19-->[androidx.core:core:1.6.0] /Users/expansionislife/.gradle/caches/transforms-3/7e9df2ac2213a6bd3cef0f2f27870d79/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
 21        android:icon="@mipmap/ic_launcher"
-22        android:label="flutter_basics" >
+22        android:label="ElevatE" >
 23        <activity
 24            android:name="com.example.flutter_basics.MainActivity"
 25            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
