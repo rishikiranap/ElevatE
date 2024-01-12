@@ -53,7 +53,7 @@ class _FirstPageState extends State<FirstPage> {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.purple,
+                    Colors.red,
                     Colors.blue
                   ], // Adjust colors as needed
                   begin: Alignment.topLeft,
@@ -70,7 +70,7 @@ class _FirstPageState extends State<FirstPage> {
               height: 280,
               child: Center(
                 child: Text(
-                  'Hii there,                                    how are you feeling today?',
+                  'Hii thevfvfvr fvfvfve,                                               how are you feeling today?',
                   style: TextStyle(
                       fontSize: buttonFontSize + 8,
                       fontWeight: FontWeight.w400,
@@ -79,14 +79,14 @@ class _FirstPageState extends State<FirstPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 25),
+              margin: const EdgeInsets.symmetric(vertical: 30),
               color: Theme.of(context).colorScheme.background,
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      buildButton(context, '😁', 'Happy'),
+                      buildButton(context, '😂', 'Happy'),
                       buildButton(context, '😇', 'Blessed'),
                       buildButton(context, '😔', 'very Sad'),
                       buildButton(context, '😫', 'Feel like crying'),
@@ -244,6 +244,6 @@ class _FirstPageState extends State<FirstPage> {
         style: OutlinedButton.styleFrom(shape: const CircleBorder()),
         onPressed: () => Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => QuotesPage(mood: mood))),
-        child: Text(emoji, style: const TextStyle(fontSize: 45)),
+        child: Text(emoji, style: const TextStyle(fontSize: 23)),
       );
 }

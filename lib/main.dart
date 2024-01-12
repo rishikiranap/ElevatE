@@ -1,10 +1,8 @@
 import 'package:ElevatE/Services/quote_service.dart';
 import 'package:flutter/material.dart';
-import 'package:ElevatE/Screens/Settings_page.dart';
-import 'package:ElevatE/Screens/LikedQuotesPage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
-import  'Screens/First_Page.dart';
+import 'Screens/First_Page.dart';
 import 'Screens/Loading_Screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Utils/global.dart';
@@ -19,8 +17,6 @@ void main() async {
     ),
   );
 }
-
-
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
