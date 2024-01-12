@@ -1,4 +1,4 @@
-#Tue Jan 02 15:24:46 CET 2024
+#Wed Jan 03 14:03:45 CET 2024
 base.0=/Users/expansionislife/Desktop/Flutter/ElevatE/ElevatE/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
