@@ -1,12 +1,13 @@
 import 'package:ElevatE/Services/quote_service.dart';
+import 'package:ElevatE/Screens/first_page.dart';
+import 'package:ElevatE/Screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
-import 'Screens/First_Page.dart';
-import 'Screens/Loading_Screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Utils/global.dart';
+
 import 'Models/app_settings.dart';
+import 'Utils/global.dart';
 
 void main() async {
   await dotenv.load(fileName: '.env');
@@ -35,7 +36,8 @@ class _MyAppState extends State<MyApp> {
     initializeApp().then((_) async {
       List<String> cachedQuotes = await loadQuotes();
       if (cachedQuotes.isEmpty) {
-        List<String> generatedQuotes = await quoteService.generateRandomQuotes();
+        List<String> generatedQuotes =
+            await quoteService.generateRandomQuotes();
         saveQuotes(generatedQuotes);
         setState(() {
           globalQuotes = generatedQuotes;
@@ -75,9 +77,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-
-
-
-
-

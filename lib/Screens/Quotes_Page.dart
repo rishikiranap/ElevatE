@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'First_Page.dart';
-import 'LikedQuotesPage.dart' as LikedPage;
-import 'Settings_page.dart';
+import 'first_page.dart';
+import 'liked_quotes_page.dart' as LikedPage;
+import 'settings_page.dart';
 import '../Services/quote_service.dart';
 import '../Widgets/Quotes_card.dart';
+import '../Models/app_settings.dart';
+import 'package:provider/provider.dart';
 
 class QuotesPage extends StatefulWidget {
   final String mood;
+
   const QuotesPage({Key? key, required this.mood}) : super(key: key);
 
   @override
@@ -15,11 +18,12 @@ class QuotesPage extends StatefulWidget {
 
 class _QuotesPageState extends State<QuotesPage> {
   bool _isLoading = true;
-  int _numberOfQuotes = 5;
+
   List<String> _quotes = [];
 
   @override
   Widget build(BuildContext context) {
+    var appSettings = Provider.of<AppSettings>(context);
     // Fetch quotes only when the widget is being built
     if (_isLoading) {
       fetchMotivationalQuotes();
@@ -50,11 +54,11 @@ class _QuotesPageState extends State<QuotesPage> {
       ),
       body: _isLoading
           ? const Center(
-        child: CircularProgressIndicator(),
-      )
+              child: CircularProgressIndicator(),
+            )
           : SingleChildScrollView(
-        child: buildQuotesList(), // Use the buildQuotesList method
-      ),
+              child: buildQuotesList(), // Use the buildQuotesList method
+            ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(label: "home", icon: Icon(Icons.home)),
@@ -74,7 +78,8 @@ class _QuotesPageState extends State<QuotesPage> {
           if (index == 1) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => LikedPage.LikedQuotesPage()),
+              MaterialPageRoute(
+                  builder: (context) => LikedPage.LikedQuotesPage()),
             );
           }
           if (index == 2) {
@@ -94,19 +99,19 @@ class _QuotesPageState extends State<QuotesPage> {
       color: Theme.of(context).colorScheme.background,
       padding: const EdgeInsets.all(16.0),
       child: Column(
-        children: _quotes
-            .map<Widget>((quote) => QuoteCard(quote: quote))
-            .toList(),
+        children:
+            _quotes.map<Widget>((quote) => QuoteCard(quote: quote)).toList(),
       ),
     );
   }
 
   Future<void> fetchMotivationalQuotes() async {
     QuoteService quoteService = QuoteService();
+    AppSettings appSettings = Provider.of<AppSettings>(context, listen: false);
 
     try {
       List<String> quotes = await quoteService.fetchMotivationalQuotes(
-          widget.mood, _numberOfQuotes);
+          widget.mood, appSettings.numberOfQuotes);
       setState(() {
         _quotes = quotes;
         _isLoading = false;

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import '../Utils/global.dart';
-import 'Quotes_Page.dart';
-import 'LikedQuotesPage.dart';
-import 'Settings_page.dart';
-
-
+import 'quotes_Page.dart';
+import 'liked_quotes_page.dart';
+import 'settings_page.dart';
 
 class FirstPage extends StatefulWidget {
   final List<String> quotes;
@@ -53,7 +51,7 @@ class _FirstPageState extends State<FirstPage> {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.red,
+                    Colors.purple,
                     Colors.blue
                   ], // Adjust colors as needed
                   begin: Alignment.topLeft,
@@ -61,16 +59,16 @@ class _FirstPageState extends State<FirstPage> {
                 ),
                 borderRadius: BorderRadius.only(
                   bottomLeft:
-                  Radius.circular(15.0), // Adjust the radius as needed
+                      Radius.circular(15.0), // Adjust the radius as needed
                   bottomRight:
-                  Radius.circular(15.0), // Adjust the radius as needed
+                      Radius.circular(15.0), // Adjust the radius as needed
                 ),
               ),
               padding: const EdgeInsets.all(16.0),
               height: 280,
               child: Center(
                 child: Text(
-                  'Hii thevfvfvr fvfvfve,                                               how are you feeling today?',
+                  'Hii there,                                         how are you feeling today?',
                   style: TextStyle(
                       fontSize: buttonFontSize + 8,
                       fontWeight: FontWeight.w400,
@@ -79,7 +77,7 @@ class _FirstPageState extends State<FirstPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 30),
+              margin: const EdgeInsets.symmetric(vertical: 25),
               color: Theme.of(context).colorScheme.background,
               child: Column(
                 children: [
@@ -119,7 +117,7 @@ class _FirstPageState extends State<FirstPage> {
                       buildButton(context, '😑', 'No comments'),
                       buildButton(context, '😝', 'Super chilled'),
                       buildButton(context, '😡', 'Very Angry'),
-                      buildButton(context, '🫨', 'Mind Boggling'),
+                      buildButton(context, '😬', 'Irritated'),
                     ],
                   ),
                   const SizedBox(height: 10), // Adjusted spacing
@@ -158,7 +156,7 @@ class _FirstPageState extends State<FirstPage> {
                     height: 270, // Set a fixed height or adjust as needed
                     child: ListView.builder(
                       scrollDirection:
-                      Axis.horizontal, // Make the list scroll horizontally
+                          Axis.horizontal, // Make the list scroll horizontally
                       itemCount: widget.quotes
                           .length, // Replace with the number of cards you want to display
                       itemBuilder: (context, index) {
@@ -180,10 +178,10 @@ class _FirstPageState extends State<FirstPage> {
                           child: Center(
                             child: Text(
                               widget.quotes[
-                              index], // Replace with your card content
+                                  index], // Replace with your card content
                               style: const TextStyle(
                                 color:
-                                Colors.white, // Set your desired text color
+                                    Colors.white, // Set your desired text color
                                 fontSize: 22.0,
                                 fontWeight: FontWeight.normal,
                               ),
@@ -217,10 +215,9 @@ class _FirstPageState extends State<FirstPage> {
               context,
               MaterialPageRoute(
                   builder: (context) => FirstPage(
-                    quotes: globalQuotes,
-                  )),
+                        quotes: globalQuotes,
+                      )),
             );
-            print(globalQuotes);
           }
           if (index == 1) {
             Navigator.push(
@@ -244,6 +241,6 @@ class _FirstPageState extends State<FirstPage> {
         style: OutlinedButton.styleFrom(shape: const CircleBorder()),
         onPressed: () => Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => QuotesPage(mood: mood))),
-        child: Text(emoji, style: const TextStyle(fontSize: 23)),
+        child: Text(emoji, style: const TextStyle(fontSize: 40)),
       );
 }

@@ -1,9 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../main.dart';
-import 'Settings_page.dart';
+import 'settings_page.dart';
 import '../Utils/global.dart';
-import 'First_Page.dart';
+import 'first_page.dart';
 
 class LikedQuotesPage extends StatefulWidget {
   @override
@@ -124,6 +124,33 @@ class QuoteCard extends StatelessWidget {
 
   QuoteCard({required this.quote, required this.onDislike});
 
+  Future<void> _showDeleteConfirmationDialog(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirm Delete'),
+          content: Text('Are you sure you want to delete this quote?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+                onDislike(); // Trigger the delete action
+              },
+              child: Text('Delete'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -148,7 +175,9 @@ class QuoteCard extends StatelessWidget {
               children: [
                 IconButton(
                   icon: const Icon(Icons.delete_forever),
-                  onPressed: onDislike,
+                  onPressed: () {
+                    _showDeleteConfirmationDialog(context);
+                  },
                 ),
               ],
             ),

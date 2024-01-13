@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'LikedQuotesPage.dart';
-import '../main.dart';
+import 'liked_quotes_page.dart';
 import '../Utils/global.dart';
 import '../Models/app_settings.dart';
-import 'First_Page.dart';
-
+import 'first_page.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -13,7 +11,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool isDarkModeEnabled = false;
   bool areNotificationsEnabled = false;
   int numberOfQuotes = 6;
   int _currentIndex = 2;
@@ -160,8 +157,8 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
-  void _showNumberOfQuotesDialog(BuildContext context,
-      AppSettings appSettings) {
+  void _showNumberOfQuotesDialog(
+      BuildContext context, AppSettings appSettings) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -220,7 +217,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ListTile(
                   title: Text(
                     '1. Data Collection:',
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     'We collect minimal data necessary for the functionality of the app. This may include user preferences and interactions within the app.',
@@ -230,7 +228,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ListTile(
                   title: Text(
                     '2. User Input:',
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     'Any information provided by users, such as mood selections or custom settings, is stored securely on your device. We do not transmit this data to external servers without your explicit consent. However, the mood selection you choose is sent to an external API for generating motivational quotes.',
@@ -240,7 +239,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ListTile(
                   title: Text(
                     '3. Data Security:',
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     'Your data is stored securely and is inaccessible to unauthorized parties. We use industry-standards to protect your information.',
@@ -250,7 +250,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ListTile(
                   title: Text(
                     '4. Third-Party Services:',
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     'The app may use third-party services for certain features. Your input data is used carefully and with utmost security, and privacy are ensured.',
@@ -260,7 +261,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ListTile(
                   title: Text(
                     '5. Updates and Notifications:',
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     'Periodic updates may be released to enhance app features. You will be notified about updates, and your data will not be used for any purpose other than improving your experience.',

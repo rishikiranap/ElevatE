@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ElevatE/themes/theme.dart';
 
 class AppSettings extends ChangeNotifier {
-  int _numberOfQuotes = 6;
+  var _numberOfQuotes = 4;
   int get numberOfQuotes => _numberOfQuotes;
 
   ThemeData _themeData = lightMode;
@@ -14,6 +14,11 @@ class AppSettings extends ChangeNotifier {
   set themeData(ThemeData themeData) {
     _themeData = themeData;
     notifyListeners();
+  }
+
+  set numberOfQuotes(int value) {
+    _numberOfQuotes = value;
+    notifyListeners(); // Notify listeners about the change
   }
 
   void toggleTheme() {
@@ -29,4 +34,5 @@ class AppSettings extends ChangeNotifier {
     _numberOfQuotes = newNumberOfQuotes;
     notifyListeners();
   }
+
 }
