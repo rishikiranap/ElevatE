@@ -13,7 +13,7 @@ void main() {
           create: (_) => AppSettings(),
           child: Builder(
             builder: (context) {
-              return QuotesPage(mood: 'Happy');
+              return const QuotesPage(mood: 'Happy');
             },
           ),
         ),
@@ -32,7 +32,7 @@ void main() {
           create: (_) => AppSettings(),
           child: Builder(
             builder: (context) {
-              return QuotesPage(mood: 'Happy');
+              return const QuotesPage(mood: 'Happy');
             },
           ),
         ),

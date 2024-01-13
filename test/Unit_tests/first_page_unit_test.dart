@@ -12,7 +12,7 @@ void main() {
       ChangeNotifierProvider<AppSettings>(
         create: (_) => AppSettings(),
         child: MaterialApp(
-          home: FirstPage(quotes: []),
+          home: FirstPage(quotes: const []),
         ),
       ),
     );

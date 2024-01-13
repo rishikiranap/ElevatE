@@ -122,28 +122,28 @@ class QuoteCard extends StatelessWidget {
   final String quote;
   final VoidCallback onDislike;
 
-  QuoteCard({required this.quote, required this.onDislike});
+  const QuoteCard({required this.quote, required this.onDislike});
 
   Future<void> _showDeleteConfirmationDialog(BuildContext context) async {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Delete'),
-          content: Text('Are you sure you want to delete this quote?'),
+          title: const Text('Confirm Delete'),
+          content: const Text('Are you sure you want to delete this quote?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
                 onDislike(); // Trigger the delete action
               },
-              child: Text('Delete'),
+              child: const Text('Delete'),
             ),
           ],
         );
