@@ -3,9 +3,10 @@ import 'first_page.dart';
 import 'liked_quotes_page.dart' as LikedPage;
 import 'settings_page.dart';
 import '../Services/quote_service.dart';
-import '../Widgets/Quotes_card.dart';
+import '../Widgets/quotes_card.dart';
 import '../Models/app_settings.dart';
 import 'package:provider/provider.dart';
+import '../Widgets/navbar_widget.dart';
 
 class QuotesPage extends StatefulWidget {
   final String mood;
@@ -18,7 +19,7 @@ class QuotesPage extends StatefulWidget {
 
 class _QuotesPageState extends State<QuotesPage> {
   bool _isLoading = true;
-
+  int _currentIndex = 0;
   List<String> _quotes = [];
 
   @override
@@ -59,13 +60,9 @@ class _QuotesPageState extends State<QuotesPage> {
           : SingleChildScrollView(
               child: buildQuotesList(), // Use the buildQuotesList method
             ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(label: "home", icon: Icon(Icons.home)),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Liked"),
-          BottomNavigationBarItem(
-              label: "settings", icon: Icon(Icons.settings)),
-        ],
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: _currentIndex,
+
         onTap: (int index) {
           if (index == 0) {
             Navigator.push(

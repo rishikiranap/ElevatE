@@ -4,6 +4,7 @@ import 'liked_quotes_page.dart';
 import '../Utils/global.dart';
 import '../Models/app_settings.dart';
 import 'first_page.dart';
+import '../Widgets/navbar_widget.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -48,7 +49,7 @@ class _SettingsPageState extends State<SettingsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SwitchListTile(
-              title:const Text('Experience Mode'),
+              title: const Text('Experience Mode'),
               value: isDarkModeEnabled,
               onChanged: (value) {
                 setState(() {
@@ -84,13 +85,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(label: "home", icon: Icon(Icons.home)),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Liked"),
-          BottomNavigationBarItem(
-              label: "settings", icon: Icon(Icons.settings)),
-        ],
+      bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (int index) {
           setState(() {

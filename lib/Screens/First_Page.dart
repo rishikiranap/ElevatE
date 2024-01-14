@@ -3,6 +3,8 @@ import '../Utils/global.dart';
 import 'quotes_Page.dart';
 import 'liked_quotes_page.dart';
 import 'settings_page.dart';
+import '../Widgets/app_bar_widget.dart';
+import '../Widgets/navbar_widget.dart';
 
 class FirstPage extends StatefulWidget {
   final List<String> quotes;
@@ -21,27 +23,7 @@ class _FirstPageState extends State<FirstPage> {
     double containerHeight = MediaQuery.of(context).size.height * 0.2;
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.black,
-        title: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                'assets/img.png', // Replace with the correct path to your dummy logo
-                width: 65,
-                height: 65,
-              ),
-            ),
-            const Spacer(),
-            const Text(
-              'ElevatE',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
+      appBar: appbar(),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Column(
@@ -197,19 +179,12 @@ class _FirstPageState extends State<FirstPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(label: "home", icon: Icon(Icons.home)),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Liked"),
-          BottomNavigationBarItem(
-              label: "settings", icon: Icon(Icons.settings)),
-        ],
+      bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (int index) {
           setState(() {
             _currentIndex = index;
           });
-
           if (index == 0) {
             Navigator.push(
               context,

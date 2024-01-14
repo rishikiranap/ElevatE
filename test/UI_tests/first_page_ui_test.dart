@@ -5,7 +5,7 @@ import 'package:ElevatE/Screens/first_page.dart';
 void main() {
   testWidgets('FirstPage UI Test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-     await tester.pumpWidget(MaterialApp(home: FirstPage(quotes: const [])));
+    await tester.pumpWidget(MaterialApp(home: FirstPage(quotes: [])));
 
     // Test 1: Verify the presence of the app bar title and logo
     expect(find.text('ElevatE'), findsOneWidget);

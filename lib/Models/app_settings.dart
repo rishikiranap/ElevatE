@@ -34,5 +34,4 @@ class AppSettings extends ChangeNotifier {
     _numberOfQuotes = newNumberOfQuotes;
     notifyListeners();
   }
-
 }

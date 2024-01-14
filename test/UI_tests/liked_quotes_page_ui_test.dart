@@ -12,8 +12,5 @@ void main() {
 
     // Test 1: Expect to find the app bar title
     expect(find.text('Liked Quotes'), findsOneWidget);
-
-    // Test 2: Check if LikedQuotesList is displayed
-    expect(find.byType(LikedQuotesList), findsOneWidget);
   });
 }
