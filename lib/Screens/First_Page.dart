@@ -8,9 +8,7 @@ import '../Widgets/navbar_widget.dart';
 
 class FirstPage extends StatefulWidget {
   final List<String> quotes;
-
   FirstPage({required this.quotes});
-
   @override
   _FirstPageState createState() => _FirstPageState();
 }
@@ -18,12 +16,47 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
   double buttonFontSize = 18.0; // Initial value, adjust as needed
   int _currentIndex = 0;
+  String searchQuery = '';
+  final List<Map<String, String>> emojiMoodMappings = [
+    {'😂': 'Happy'},
+    {'😇': 'Blessed'},
+    {'😔': 'Sad'},
+    {'😮‍💨': 'exhausted'},
+    {'😫': 'Feel like crying'},
+    {'😤': 'pissed off'},
+    {'😭': 'crying'},
+    {'😰': 'tensed'},
+    {'😟': 'Unamused '},
+    {'😵‍💫': 'So Confused'},
+    {'😑': 'No comments'},
+    {'🤯': 'irritated'},
+    {'😖': 'embarrassed'},
+    {'😬': 'nervoused'},
+    {'🥴': 'Dont care'},
+    {'🫤': 'confused'},
+    {'😝': 'super chilled'},
+    {'😡': 'Very Angry'},
+    {'🥺': 'emotional'},
+    {'😓': 'depressed'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     double containerHeight = MediaQuery.of(context).size.height * 0.2;
 
     return Scaffold(
-      appBar: appbar(),
+      appBar: appbar(
+        searchController: TextEditingController(),
+        onSearch: (String query) {
+          Future.delayed(Duration.zero, () {
+            setState(() {
+              searchQuery = query;
+            });
+          });
+        },
+        emojiMoodMappings:
+            emojiMoodMappings, // Provide the emojiMoodMappings here
+      ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Column(
@@ -87,7 +120,7 @@ class _FirstPageState extends State<FirstPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       buildButton(context, '🤯', 'very irritated'),
-                      buildButton(context, '😖', 'irritated'),
+                      buildButton(context, '😖', 'embarrassed'),
                       buildButton(context, '🥴', 'Dont care'),
                       buildButton(context, '🫤', 'confused'),
                     ],
@@ -99,7 +132,7 @@ class _FirstPageState extends State<FirstPage> {
                       buildButton(context, '😑', 'No comments'),
                       buildButton(context, '😝', 'Super chilled'),
                       buildButton(context, '😡', 'Very Angry'),
-                      buildButton(context, '😬', 'Irritated'),
+                      buildButton(context, '😬', 'nervoused'),
                     ],
                   ),
                   const SizedBox(height: 10), // Adjusted spacing
@@ -108,7 +141,7 @@ class _FirstPageState extends State<FirstPage> {
                     children: [
                       buildButton(context, '🥺', 'Very emotional'),
                       buildButton(context, '😮‍💨', 'exhausted'),
-                      buildButton(context, '😟', 'Shocked'),
+                      buildButton(context, '😟', 'Unamused '),
                       buildButton(context, '😓', 'Depressed'),
                     ],
                   ),

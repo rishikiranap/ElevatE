@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'emoji_search.dart'; // Make sure to import EmojiSearchDelegate
 
 class appbar extends StatelessWidget implements PreferredSizeWidget {
+  final TextEditingController searchController;
+  final Function(String) onSearch;
+  final List<Map<String, String>> emojiMoodMappings;
+
+  appbar({
+    required this.searchController,
+    required this.onSearch,
+    required this.emojiMoodMappings,
+  });
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -33,7 +44,13 @@ class appbar extends StatelessWidget implements PreferredSizeWidget {
             child: IconButton(
               icon: Icon(Icons.search),
               onPressed: () {
-                // Handle search button pressed
+                showSearch(
+                  context: context,
+                  delegate: EmojiSearchDelegate(
+                    emojiMoodMappings: emojiMoodMappings,
+                    onSearch: onSearch,
+                  ),
+                );
               },
             ),
           ),
