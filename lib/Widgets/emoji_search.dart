@@ -90,6 +90,21 @@ class EmojiSearchDelegate extends SearchDelegate<String> {
     );
   }
 
+  Widget buildButtonRow(
+      BuildContext context, List<Map<String, String>> emojis) {
+    return Center(
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: emojis.map((emoji) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0), // Adjust padding as needed
+            child: buildButton(context, emoji),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
   Widget buildButton(BuildContext context, Map<String, String> emoji) =>
       OutlinedButton(
         style: OutlinedButton.styleFrom(shape: const CircleBorder()),
@@ -108,6 +123,6 @@ class EmojiSearchDelegate extends SearchDelegate<String> {
             ),
           );
         },
-        child: Text(emoji.keys.first, style: const TextStyle(fontSize: 50)),
+        child: Text(emoji.keys.first, style: const TextStyle(fontSize: 30)),
       );
 }
