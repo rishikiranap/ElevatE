@@ -35,12 +35,12 @@ class appbar extends StatelessWidget implements PreferredSizeWidget {
               alignment: Alignment.center,
               child: const Text(
                 'ElevatE',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12.0),
             child: IconButton(
               icon: Icon(Icons.search),
               onPressed: () {

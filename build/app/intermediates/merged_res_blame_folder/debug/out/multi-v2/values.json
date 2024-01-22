@@ -4,7 +4,7 @@
             "outputFile": "com.example.flutter_basics.app-mergeDebugResources-9:/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/expansionislife/Desktop/Flutter/ElevatE/ElevatE/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/expansionislife/Desktop/ElevatE/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
